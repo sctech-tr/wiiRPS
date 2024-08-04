@@ -75,7 +75,7 @@ int main(int argc, char **argv) {
 	VIDEO_Flush();
 	VIDEO_WaitVSync();
 	if(rmode->viTVMode&VI_NON_INTERLACE) VIDEO_WaitVSync();
-	printf("\x1b[2;0H");
+	printf("\x1b[2;0H"); // send cursor to row 1, line 2
 	// initialize ------------
     srand(time(NULL));
     printf("Welcome to wiiRPS!\n");
@@ -90,6 +90,7 @@ int main(int argc, char **argv) {
             int buttons = get_input();
             if (buttons & WPAD_BUTTON_A) {
 				printf("\033[2J"); // clear the screen
+				printf("\x1b[2;0H"); // send cursor to row 1, line 2
 				printf("Welcome to wiiRPS!\n");
 				printf("Press A to select rock.\n");
 				printf("Press 1 to select paper.\n");
